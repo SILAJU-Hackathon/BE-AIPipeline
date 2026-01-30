@@ -1,0 +1,20 @@
+services:
+  be-aipipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: be-aipipeline
+    ports:
+      - "8000:8000"
+    environment:
+      # Cloudinary
+      - CLOUDINARY_URL=${CLOUDINARY_URL}
+    volumes:
+      - ./outputnye:/app/outputnye
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import httpx; httpx.get('http://localhost:8000/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s

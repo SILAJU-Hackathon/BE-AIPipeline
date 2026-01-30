@@ -1,0 +1,38 @@
+[project]
+name = "be-aipipeline"
+version = "1.0.0"
+description = "Road Damage Analysis API - GNN + CNN Pipeline"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    # PyTorch CPU
+    "torch>=2.0.0",
+    "torch-geometric>=2.4.0",
+    "torchvision>=0.15.0",
+    # Data processing
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "scipy>=1.10.0",
+    "joblib>=1.3.0",
+    "pyarrow>=14.0.0",
+    "pillow>=10.0.0",
+    # API
+    "fastapi>=0.104.0",
+    "uvicorn>=0.24.0",
+    "pydantic>=2.0.0",
+    "python-multipart>=0.0.7",
+    # HTTP Client
+    "httpx>=0.28.1",
+    # Cloudinary
+    "cloudinary>=1.36.0",
+    # Env
+    "python-dotenv>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
